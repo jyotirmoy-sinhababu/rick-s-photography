@@ -50,6 +50,7 @@ const ProfileHeader = () => {
             {authUser.fullName}
           </Text>
         </Flex>
+        <Text fontSize={'sm'}>{authUser.bio}</Text>
       </VStack>
     </Flex>
   );
