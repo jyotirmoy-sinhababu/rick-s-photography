@@ -7,12 +7,12 @@ import { collection, query, where, getDocs } from 'firebase/firestore';
 
 import useShowToast from './useShowToast';
 
-// import { useDispatch } from 'react-redux';
-// import { login } from '../slice/AuthstateSlice';
+import { useDispatch } from 'react-redux';
+import { login } from '../slice/AuthSlice';
 
 const useSignUpWithEmailAndPassword = () => {
   const [isLoading, setIsLoading] = useState(false);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const showToast = useShowToast();
 
@@ -63,7 +63,7 @@ const useSignUpWithEmailAndPassword = () => {
         await setDoc(doc(firestore, 'users', newUser.user.uid), userDoc);
         setIsLoading(false);
         localStorage.setItem('user-info', JSON.stringify(userDoc));
-        // dispatch(login(userDoc));
+        dispatch(login(userDoc));
       }
     } catch (error) {
       showToast('Error', error.message, 'error');
