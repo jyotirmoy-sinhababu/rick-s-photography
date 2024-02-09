@@ -13,6 +13,7 @@ import useLogout from '../../hooks/useLogout';
 
 import EditProfile from './EditProfile';
 import { CiLogout } from 'react-icons/ci';
+import CreatePostBtn from '../button/CreatePostBtn';
 
 const ProfileHeader = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -50,15 +51,9 @@ const ProfileHeader = () => {
           >
             Admin Profile
           </Button>
-          <Button
-            bg={'white'}
-            color={'black'}
-            _hover={{ bg: 'whiteAlpha.800' }}
-            size={{ base: 'xs', md: 'sm' }}
-          >
-            Upload Picture
-          </Button>
-          <Flex pl={'74px'}>
+
+          <Flex pl={'74px'} gap={'12px'} alignItems={'center'}>
+            <CreatePostBtn />
             <Button
               display={'flex'}
               justifyContent={'center'}
