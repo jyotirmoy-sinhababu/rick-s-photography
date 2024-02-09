@@ -9,12 +9,15 @@ import {
 } from '@chakra-ui/react';
 
 import { useSelector } from 'react-redux';
+import useLogout from '../../hooks/useLogout';
 
 import EditProfile from './EditProfile';
+import { CiLogout } from 'react-icons/ci';
 
 const ProfileHeader = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const authUser = useSelector((state) => state.auth.user);
+  const { handleLogout, isLoggingOut } = useLogout();
 
   return (
     <Flex
@@ -55,6 +58,20 @@ const ProfileHeader = () => {
           >
             Upload Picture
           </Button>
+          <Flex pl={'74px'}>
+            <Button
+              display={'flex'}
+              justifyContent={'center'}
+              bg={'white'}
+              color={'black'}
+              _hover={{ bg: 'whiteAlpha.800' }}
+              size={{ base: 'xs', md: 'sm' }}
+              onClick={handleLogout}
+              isLoading={isLoggingOut}
+            >
+              <CiLogout /> Log out
+            </Button>
+          </Flex>
         </Flex>
         <Flex alignItems={'center'} gap={4}>
           <Text fontSize={'sm'} fontWeight={'bold'}>
