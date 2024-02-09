@@ -10,7 +10,10 @@ import {
 
 import { useSelector } from 'react-redux';
 
+import EditProfile from './EditProfile';
+
 const ProfileHeader = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const authUser = useSelector((state) => state.auth.user);
 
   return (
@@ -20,17 +23,17 @@ const ProfileHeader = () => {
       direction={{ base: 'column', sm: 'row' }}
     >
       <AvatarGroup
-        gap={{ base: 'xl', md: '2xl' }}
+        size={{ base: 'xl', md: '2xl' }}
         justifyContent={'center'}
         alignSelf={'flex-start'}
         mx={'auto'}
       >
-        <Avatar src='' alt='profile pic' />
+        <Avatar src={authUser.profilePicURL} alt='profile pic' />
       </AvatarGroup>
       <VStack alignItems={'start'} gap={2} mx={'auto'} flex={1}>
         <Flex
           gap={4}
-          direction={{ base: 'column', sm: 'row' }}
+          direction={'row'}
           justifyContent={{ base: 'center', sm: 'flex-start' }}
           alignItems={'center'}
           w={'full'}
@@ -40,8 +43,9 @@ const ProfileHeader = () => {
             color={'black'}
             _hover={{ bg: 'whiteAlpha.800' }}
             size={{ base: 'xs', md: 'sm' }}
+            onClick={onOpen}
           >
-            Edit Profile
+            Admin Profile
           </Button>
           <Button
             bg={'white'}
@@ -49,17 +53,23 @@ const ProfileHeader = () => {
             _hover={{ bg: 'whiteAlpha.800' }}
             size={{ base: 'xs', md: 'sm' }}
           >
-            Create post
+            Upload Picture
           </Button>
         </Flex>
         <Flex alignItems={'center'} gap={4}>
           <Text fontSize={'sm'} fontWeight={'bold'}>
-            {authUser.fullName}
+            Full name:- {authUser.fullName}
           </Text>
-          <Text fontSize={{ base: 'sm', md: 'lg' }}>{authUser.userName}</Text>
+          <Text fontSize={{ base: 'sm' }} fontWeight={'bold'}>
+            {' '}
+            User name:- {authUser.userName}
+          </Text>
         </Flex>
-        <Text fontSize={'sm'}>{authUser.bio}</Text>
+        <Text fontSize={'sm'} fontWeight={'bold'}>
+          Bio:- {authUser.bio}
+        </Text>
       </VStack>
+      {isOpen && <EditProfile isOpen={isOpen} onClose={onClose} />}
     </Flex>
   );
 };
