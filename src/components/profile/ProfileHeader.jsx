@@ -35,7 +35,6 @@ const ProfileHeader = () => {
           alignItems={'center'}
           w={'full'}
         >
-          <Text fontSize={{ base: 'sm', md: 'lg' }}>{authUser.userName}</Text>
           <Button
             bg={'white'}
             color={'black'}
@@ -44,11 +43,20 @@ const ProfileHeader = () => {
           >
             Edit Profile
           </Button>
+          <Button
+            bg={'white'}
+            color={'black'}
+            _hover={{ bg: 'whiteAlpha.800' }}
+            size={{ base: 'xs', md: 'sm' }}
+          >
+            Create post
+          </Button>
         </Flex>
         <Flex alignItems={'center'} gap={4}>
           <Text fontSize={'sm'} fontWeight={'bold'}>
             {authUser.fullName}
           </Text>
+          <Text fontSize={{ base: 'sm', md: 'lg' }}>{authUser.userName}</Text>
         </Flex>
         <Text fontSize={'sm'}>{authUser.bio}</Text>
       </VStack>
