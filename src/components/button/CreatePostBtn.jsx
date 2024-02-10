@@ -155,7 +155,6 @@ const postCreation = () => {
     setIsLoading(true);
     const newPost = {
       caption: caption,
-
       createdAt: Date.now(),
       createdBy: authUser.uid,
     };
