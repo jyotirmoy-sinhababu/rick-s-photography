@@ -23,7 +23,6 @@ const ProfilePage = () => {
         flexDirection={'column'}
       >
         <ProfileHeader />
-        {/* <ProfileHeaderSkeleton />s */}
       </Flex>
       <Flex
         px={{ base: 2, sm: 4 }}
