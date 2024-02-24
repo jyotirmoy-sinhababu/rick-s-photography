@@ -1,8 +1,6 @@
 import {
   Container,
   Flex,
-  Text,
-  Link,
   Skeleton,
   SkeletonCircle,
   VStack,

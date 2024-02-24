@@ -11,7 +11,6 @@ import {
   ModalContent,
   ModalOverlay,
   Text,
-  VStack,
   useDisclosure,
 } from '@chakra-ui/react';
 
@@ -108,6 +107,7 @@ const ProfilePost = ({ post }) => {
               mx={'auto'}
               maxH={'90vh'}
               minH={'50vh'}
+              flexDir={'column-reverse'}
             >
               <Flex
                 borderRadius={4}
@@ -124,7 +124,7 @@ const ProfilePost = ({ post }) => {
                 flex={1}
                 flexDir={'column'}
                 px={10}
-                display={{ base: 'none', md: 'flex' }}
+                display={{ md: 'flex' }}
               >
                 <Flex alignItems={'center'} justifyContent={'space-between'}>
                   <Flex alignItems={'center'} gap={4}>
@@ -150,9 +150,6 @@ const ProfilePost = ({ post }) => {
                     <MdDelete size={20} cursor='pointer' />
                   </Button>
                 </Flex>
-                <Divider my={4} bg={'gray.500'} />
-
-                <Divider my={4} bg={'gray.8000'} />
               </Flex>
             </Flex>
           </ModalBody>

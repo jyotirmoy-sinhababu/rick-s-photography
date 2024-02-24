@@ -76,7 +76,7 @@ const CreatePostBtn = () => {
           borderRadius={6}
           p={2}
           w={{ base: 10, md: 'full' }}
-          justifyContent={{ base: 'center', md: 'flex-start' }}
+          justifyContent={{ md: 'flex-start' }}
           onClick={onOpen}
         >
           <MdOutlineLibraryAddCheck />
