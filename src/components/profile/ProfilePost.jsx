@@ -85,14 +85,14 @@ const ProfilePost = ({ post }) => {
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalCloseButton />
-          <ModalBody bg={'black'} pb={5}>
+          <ModalCloseButton color={'white'} />
+          <ModalBody bg={'grey'} pb={5}>
             <Flex
               gap='4'
               w={{ base: '90%', sm: '70%', md: 'full' }}
               mx={'auto'}
-              maxH={'90vh'}
-              minH={'50vh'}
+              maxH={'fitContent'}
+              minH={'fitContent'}
               flexDir={'column-reverse'}
             >
               <Flex
@@ -104,7 +104,15 @@ const ProfilePost = ({ post }) => {
                 justifyContent={'center'}
                 alignItems={'center'}
               >
-                {<Image src={post?.imageURL} alt='profile post' />}
+                {
+                  <Image
+                    src={post?.imageURL}
+                    alt='profile post'
+                    fit={'contain'}
+                    w={'100%'}
+                    h={'100%'}
+                  />
+                }
               </Flex>
               <Flex
                 flex={1}
@@ -119,7 +127,7 @@ const ProfilePost = ({ post }) => {
                       size={'sm'}
                       name='As a Programmer'
                     />
-                    <Text fontWeight={'bold'} fontSize={12}>
+                    <Text fontWeight={'bold'} fontSize={12} color={'white'}>
                       {authUser.userName}
                     </Text>
                   </Flex>
@@ -132,6 +140,7 @@ const ProfilePost = ({ post }) => {
                     p={1}
                     onClick={handleDelete}
                     isLoading={isDeleting}
+                    color={'white'}
                   >
                     <MdDelete size={20} cursor='pointer' />
                   </Button>
