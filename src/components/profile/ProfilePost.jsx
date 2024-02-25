@@ -68,20 +68,6 @@ const ProfilePost = ({ post }) => {
         aspectRatio={1 / 1}
         onClick={onOpen}
       >
-        <Flex
-          opacity={0}
-          _hover={{ opacity: 1 }}
-          position={'absolute'}
-          top={0}
-          left={0}
-          right={0}
-          bottom={0}
-          bg={'blackAlpha.700'}
-          transition={'all 0.3s ease'}
-          zIndex={1}
-          justifyContent={'center'}
-        ></Flex>
-
         <Image
           src={post?.imageURL}
           alt='profile post'
