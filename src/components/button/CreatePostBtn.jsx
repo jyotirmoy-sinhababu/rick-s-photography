@@ -26,6 +26,8 @@ import usePreviewImg from '../../hooks/usePreviewImg';
 
 import useShowToast from '../../hooks/useShowToast';
 import { useSelector, useDispatch } from 'react-redux';
+import { updatedState } from '../../slice/UpdateSlice';
+
 import { createPost } from '../../slice/PostSlice';
 
 import {
@@ -39,6 +41,7 @@ import { getDownloadURL, ref, uploadString } from 'firebase/storage';
 import { firestore, storage } from '../../firebase/Firebase';
 
 const CreatePostBtn = () => {
+  const dispatch = useDispatch();
   const [caption, setCaption] = useState('');
   const imgRef = useRef(null);
 
@@ -54,6 +57,7 @@ const CreatePostBtn = () => {
       onClose();
       setCaption('');
       setSelectedFile(null);
+      dispatch(updatedState(true));
     } catch (error) {
       showToast('Error', error.message, 'error');
     }

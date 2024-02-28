@@ -2,10 +2,13 @@ import { useState, useEffect } from 'react';
 import useShowToast from './useShowToast';
 import { useSelector, useDispatch } from 'react-redux';
 import { setPost } from '../slice/PostSlice';
+import { updatedState } from '../slice/UpdateSlice';
 import { firestore } from '../firebase/Firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 
 const useGetUserPosts = () => {
+  const isUpdating = useSelector((state) => state.update.isUpdating);
+  console.log(isUpdating);
   const [isLoading, setIsLoading] = useState(true);
   const posts = useSelector((state) => state.post.posts);
   const authUser = useSelector((state) => state.auth.user);
@@ -30,6 +33,7 @@ const useGetUserPosts = () => {
         });
         posts.sort((a, b) => b.createdAt - a.createdAt);
         dispatch(setPost(posts));
+        dispatch(updatedState(false));
       } catch (error) {
         showToast('Error', error.message, 'error');
         dispatch(setPost([]));
@@ -38,7 +42,7 @@ const useGetUserPosts = () => {
       }
     };
     getPost();
-  }, [setPost, showToast, authUser]);
+  }, [setPost, showToast, authUser, isUpdating]);
   return { isLoading, posts };
 };
 
