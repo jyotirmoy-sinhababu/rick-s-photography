@@ -8,7 +8,6 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 
 const useGetUserPosts = () => {
   const isUpdating = useSelector((state) => state.update.isUpdating);
-  console.log(isUpdating);
   const [isLoading, setIsLoading] = useState(true);
   const posts = useSelector((state) => state.post.posts);
   const authUser = useSelector((state) => state.auth.user);

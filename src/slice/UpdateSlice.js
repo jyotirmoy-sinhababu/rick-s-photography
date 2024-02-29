@@ -7,7 +7,7 @@ const UpdateSlice = createSlice({
   },
   reducers: {
     updatedState: (state, action) => {
-      state.isTrue = action.payload;
+      state.isUpdating = action.payload;
     },
   },
 });
