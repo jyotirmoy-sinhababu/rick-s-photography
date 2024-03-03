@@ -27,11 +27,9 @@ const useLogin = () => {
         const docSnap = await getDoc(docRef);
         localStorage.setItem('user-info', JSON.stringify(docSnap.data()));
         dispatch(login(docSnap.data()));
-        console.log(doc);
       }
     } catch (error) {
       showToast('Error', error.message, 'error');
-      console.log(error);
     }
   };
 
